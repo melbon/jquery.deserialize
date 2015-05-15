@@ -1,0 +1,21 @@
+{
+  "name": "jquery.deserialize",
+  "main": "jquery.deserialize.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/melbon/jquery.deserialize",
+  "authors": [
+    "melbon <mario@vidov.it>"
+  ],
+  "keywords": [
+    "deserialize",
+    "serialize"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
