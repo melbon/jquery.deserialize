@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+
+<form>
+    <div>
+        <input type="text" name="name" id="name" placeholder="Name" />
+    </div>
+    <div>
+        <input type="text" name="email" id="email" placeholder="Email" />
+    </div>
+    <div>
+        <textarea name="message" id="message" placeholder="Message"></textarea>
+    </div>
+    <div>
+        <select name="countries" multiple>
+            <option value="FR">France</option>
+            <option value="ES">Spain</option>
+            <option value="US">United States</option>
+        </select>
+    </div>
+    <div>
+        <select name="lang">
+            <option></option>
+            <option value="FR">FR</option>
+            <option value="EN">EN</option>
+            <option value="RU">RU</option>
+        </select>
+    </div>
+    <div>
+        <input type="radio" name="type" id="radio1" value="radio1" /><label for="radio1">Radio1</label>
+        <input type="radio" name="type" id="radio2" value="radio2" /><label for="radio2">Radio2</label>
+    </div>
+    <div>
+        <input type="checkbox" name="check" id="check1" value="check1"><label for="check1">Check1</label>
+        <input type="checkbox" name="check" id="check2" value="check4"><label for="check2">Check2</label>
+        <input type="checkbox" name="check" id="check3" value="check3"><label for="check3">Check3</label>
+    </div>
+    <div>
+        <input type="button"value="Serialize" id="serialize" />
+        <input type="button"value="SerializeArray" id="serializeArray" />
+        <input type="button" value="Deserialize" id="deserialize" />
+        <input type="reset" value="Reset" id="reset" />
+    </div>
+</form>
+
+<p></p>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="../jquery.deserialize.js"></script>
+<script>
+function deSerializeMe(container) {
+    var serializeData = "",
+        self = this;
+
+    this.serialize = function() {
+        serializeData = $(container).serialize();
+    };
+
+    this.serializeArray = function() {
+        serializeData = $(container).serializeArray();
+    };
+
+    this.deserialize = function() {
+        $(container).deserialize(serializeData);
+    };
+
+    return {
+        serialize: self.serialize,
+        serializeArray: self.serializeArray,
+        deserialize: self.deserialize
+    }
+}
+
+var form = new deSerializeMe("form");
+    $("#serialize").click(function() {
+        form.serialize();
+    });
+    $("#serializeArray").click(function() {
+        form.serializeArray();
+    });
+    $("#deserialize").click(function() {
+        form.deserialize();
+    });
+</script>
+</body>
+</html>
